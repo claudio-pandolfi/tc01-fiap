@@ -1,0 +1,19 @@
+Cadastrar registro sobre processamento
+---
+tags:
+  - processing
+parameters:
+  - name: 'body'
+    in: 'body'
+    required: true,
+    schema: 
+      $ref: '#/definitions/NewProcessing'
+responses:
+  200:
+    description: Retorno do cadastro um registro sobre processamento
+    schema:
+      $ref: '#/definitions/NewProcessing'
+  400:
+    description: Erro ao cadastrar o registro sobre processamento
+    schema:
+      $ref: '#/definitions/Message'

@@ -1,0 +1,53 @@
+Listar registros sobre processamentos
+---
+tags:
+  - processing
+parameters:
+  - name: product
+    in: query
+    type: string
+    required: false
+  - name: year
+    in: query
+    type: string
+    required: false
+definitions:
+  Processing:
+    type: object
+    properties:
+      _id:
+        type: string
+      cultivation:
+        type: string
+      type:
+        type: string
+      year:
+        type: number
+      quantity:
+        type: number
+  NewProcessing:
+    type: object
+    properties:
+      cultivation:
+        type: string
+      type:
+        type: string
+      year:
+        type: number
+      quantity:
+        type: number
+responses:
+  200:
+    description: Retorno da lista dos regristros sobre processamento
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/Processing'
+  400:
+    description: Erro ao buscar os registros sobre processamento
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Lista de processamentos não encontrado
+    schema:
+      $ref: '#/definitions/Message'

@@ -1,0 +1,22 @@
+Remover registro sobre produção
+---
+tags:
+  - production
+parameters:
+  - name: production_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Retorno de sucesso na exclusão do registro sobre produção
+    schema:
+      $ref: '#/definitions/Message'
+  400:
+    description: Erro ao excluir o registro sobre produção
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Registro sobre produção não encontrado
+    schema:
+      $ref: '#/definitions/Message'

@@ -1,0 +1,19 @@
+Cadastrar registro sobre produção
+---
+tags:
+  - production
+parameters:
+  - name: 'body'
+    in: 'body'
+    required: true,
+    schema: 
+      $ref: '#/definitions/NewProduction'
+responses:
+  200:
+    description: Retorno do cadastro um registro sobre produção
+    schema:
+      $ref: '#/definitions/NewProduction'
+  400:
+    description: Erro ao cadastrar o registro sobre produção
+    schema:
+      $ref: '#/definitions/Message'

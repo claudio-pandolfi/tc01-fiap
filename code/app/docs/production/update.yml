@@ -1,0 +1,27 @@
+Atualizar registro sobre produção
+---
+tags:
+  - production
+parameters:
+  - name: production_id
+    in: path
+    type: string
+    required: true
+  - name: 'body'
+    in: 'body'
+    required: true,
+    schema: 
+      $ref: '#/definitions/NewProduction'
+responses:
+  200:
+    description: Retorno da atualização de registro sobre produção
+    schema:
+      $ref: '#/definitions/NewProduction'
+  400:
+    description: Erro ao atualizar o registro sobre produção
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Registro sobre produção não encontrado
+    schema:
+      $ref: '#/definitions/Message'

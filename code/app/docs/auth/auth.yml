@@ -1,0 +1,36 @@
+Gerar chave de acesso
+---
+tags:
+  - auth
+parameters:
+  - name: username
+    in: query
+    type: string
+    required: true
+  - name: password
+    in: query
+    type: string
+    required: true
+definitions:
+  Login:
+    type: object
+    properties:
+      status:
+        type: string
+      access_token:
+        type: string
+responses:
+  200:
+    description: Retorno do chave de acesso
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/Login'
+  401:
+    description: Usuário ou senha inválida
+    schema:
+      $ref: '#/definitions/Message'
+  400:
+    description: Erro ao gerar a chave de acesso
+    schema:
+      $ref: '#/definitions/Message'

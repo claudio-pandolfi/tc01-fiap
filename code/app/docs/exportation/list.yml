@@ -1,0 +1,63 @@
+Listar registros sobre exportações
+---
+tags:
+  - exportation
+parameters:
+  - name: country
+    in: query
+    type: string
+    required: false
+  - name: product
+    in: query
+    type: string
+    required: false
+  - name: year
+    in: query
+    type: string
+    required: false
+security:
+  - bearerAuth: []
+definitions:
+  Exportation:
+    type: object
+    properties:
+      _id:
+        type: string
+      country:
+        type: string
+      product:
+        type: string
+      year:
+        type: number
+      quantity:
+        type: number
+      amount:
+        type: number
+  NewExportation:
+    type: object
+    properties:
+      country:
+        type: string
+      product:
+        type: string
+      year:
+        type: number
+      quantity:
+        type: number
+      amount:
+        type: number
+responses:
+  200:
+    description: Retorno da lista dos registros sobre exportações
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/Exportation'
+  400:
+    description: Erro ao buscar os registros sobre exportação
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Lista de exportações não encontrado
+    schema:
+      $ref: '#/definitions/Message'

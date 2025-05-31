@@ -1,0 +1,27 @@
+Atualizar registro sobre comercialização
+---
+tags:
+  - trading
+parameters:
+  - name: trading_id
+    in: path
+    type: string
+    required: true
+  - name: 'body'
+    in: 'body'
+    required: true,
+    schema: 
+      $ref: '#/definitions/NewTrading'
+responses:
+  200:
+    description: Retorno da atualização de registro sobre comercialização
+    schema:
+      $ref: '#/definitions/NewTrading'
+  400:
+    description: Erro ao atualizar o registro sobre comercialização
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Registro sobre comercialização não encontrado
+    schema:
+      $ref: '#/definitions/Message'

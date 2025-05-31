@@ -1,0 +1,53 @@
+Listar registros sobre comercializações
+---
+tags:
+  - trading
+parameters:
+  - name: product
+    in: query
+    type: string
+    required: false
+  - name: year
+    in: query
+    type: string
+    required: false
+definitions:
+  Trading:
+    type: object
+    properties:
+      _id:
+        type: string
+      product:
+        type: string
+      type:
+        type: string
+      year:
+        type: number
+      amount:
+        type: number
+  NewTrading:
+    type: object
+    properties:
+      product:
+        type: string
+      type:
+        type: string
+      year:
+        type: number
+      amount:
+        type: number
+responses:
+  200:
+    description: Retorno da lista dos regristros sobre comercializações
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/Trading'
+  400:
+    description: Erro ao buscar os registros sobre comercialização 
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Lista de comercialização não encontrado
+    schema:
+      $ref: '#/definitions/Message'

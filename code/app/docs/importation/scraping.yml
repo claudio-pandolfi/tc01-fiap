@@ -1,0 +1,61 @@
+Raspagem dos registros de importação
+---
+tags:
+  - importation
+parameters:
+  - name: year
+    in: query
+    type: string
+    required: true
+    description: Anos separado por vírgula (Ex. _**2022, 2023**_). Para buscar todos os anos utilize o valor _**all**_
+    default: 2023
+  - name: product
+    in: query
+    type: string
+    required: true
+    description: Produtos separados por vírgula (Ex. _**wine, juice**_). Para buscar todos os anos utilize o valor _**all**_
+    default: wine
+definitions:
+  JobImportationInfo:
+    type: object
+    properties:
+      job_id:
+        type: string
+      job_name:
+        type: string
+      product:
+        type: string
+      year:
+        type: number
+  JobImportationResponse:
+    type: object
+    properties:
+      status:
+        type: number
+      message:
+        type: string
+      jobs:
+        type: array
+        items:
+          $ref: '#/definitions/JobImportationInfo'
+responses:
+  200:
+    description: Agendamento da raspagem dos registros sobre importação
+    schema:
+      $ref: '#/definitions/JobImportationResponse'
+  "400 / 1":
+    description: Erro ao agendar a raspagem sobre importação
+    schema:
+      $ref: '#/definitions/Message'
+  "400 / 2":
+    description: Ano inválido. (> 1970 ou < 2023)
+    schema:
+      $ref: '#/definitions/Message'
+  "400 / 3":
+    description: Produto inválido. Opções disponíveis -> _**all, wine, sparkling, grape, raisin, juice.**_'
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Não foi possível localizar os dados para a raspagem
+    schema:
+      $ref: '#/definitions/Message'

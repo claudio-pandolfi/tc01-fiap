@@ -1,0 +1,19 @@
+Cadastrar registro sobre importação
+---
+tags:
+  - importation
+parameters:
+  - name: 'body'
+    in: 'body'
+    required: true,
+    schema: 
+      $ref: '#/definitions/NewImportation'
+responses:
+  200:
+    description: Retorno do cadastro um registro sobre importação
+    schema:
+      $ref: '#/definitions/NewImportation'
+  400:
+    description: Erro ao cadastrar o registro sobre importação
+    schema:
+      $ref: '#/definitions/Message'

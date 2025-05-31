@@ -1,0 +1,27 @@
+Atualizar registro sobre importação
+---
+tags:
+  - importation
+parameters:
+  - name: importation_id
+    in: path
+    type: string
+    required: true
+  - name: 'body'
+    in: 'body'
+    required: true,
+    schema: 
+      $ref: '#/definitions/NewImportation'
+responses:
+  200:
+    description: Retorno da atualização de registro sobre importação
+    schema:
+      $ref: '#/definitions/NewImportation'
+  400:
+    description: Erro ao atualizar o registro sobre importação
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Registro sobre importação não encontrado
+    schema:
+      $ref: '#/definitions/Message'

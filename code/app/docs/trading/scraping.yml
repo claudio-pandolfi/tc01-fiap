@@ -1,0 +1,49 @@
+Raspagem dos registros de comercialização
+---
+tags:
+  - trading
+parameters:
+  - name: year
+    in: query
+    type: string
+    required: true
+    description: Anos separado por vírgula (Ex. _**2022, 2023**_). Para buscar todos os anos utilize o valor _**all**_
+    default: 2023
+definitions:
+  JobInfo:
+    type: object
+    properties:
+      job_id:
+        type: string
+      job_name:
+        type: string
+      year:
+        type: number
+  JobResponse:
+    type: object
+    properties:
+      status:
+        type: number
+      message:
+        type: string
+      jobs:
+        type: array
+        items:
+          $ref: '#/definitions/JobInfo'
+responses:
+  200:
+    description: Agendamento da raspagem dos registros sobre comercialização
+    schema:
+      $ref: '#/definitions/JobResponse'
+  "400 / 1":
+    description: Erro ao agendar a raspagem sobre comercialização
+    schema:
+      $ref: '#/definitions/Message'
+  "400 / 2":
+    description: Ano inválido. (> 1970 ou < 2023)
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Não foi possível localizar os dados para a raspagem
+    schema:
+      $ref: '#/definitions/Message'

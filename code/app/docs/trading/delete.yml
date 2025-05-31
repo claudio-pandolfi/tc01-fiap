@@ -1,0 +1,22 @@
+Remover registro sobre comercialização
+---
+tags:
+  - trading
+parameters:
+  - name: trading_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Retorno de sucesso na exclusão do registro sobre comercialização
+    schema:
+      $ref: '#/definitions/Message'
+  400:
+    description: Erro ao excluir o registro sobre comercialização
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Registro sobre comercialização não encontrado
+    schema:
+      $ref: '#/definitions/Message'

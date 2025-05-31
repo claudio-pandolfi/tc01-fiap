@@ -1,0 +1,22 @@
+Retornar registro sobre comercialização
+---
+tags:
+  - trading
+parameters:
+  - name: trading_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Retorno de um registro sobre comercialização
+    schema:
+      $ref: '#/definitions/Trading'
+  400:
+    description: Erro ao localizar o registro sobre comercialização
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Registro sobre comercialização não encontrado
+    schema:
+      $ref: '#/definitions/Message'

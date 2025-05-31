@@ -1,0 +1,22 @@
+Retornar registro sobre exportação
+---
+tags:
+  - exportation
+parameters:
+  - name: exportation_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Retorno de um registro sobre exportação
+    schema:
+      $ref: '#/definitions/Exportation'
+  400:
+    description: Erro ao localizar o registro sobre exportação
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Registro sobre exportação não encontrado
+    schema:
+      $ref: '#/definitions/Message'

@@ -1,0 +1,60 @@
+Listar registros sobre produções
+---
+tags:
+  - production
+parameters:
+  - name: product
+    in: query
+    type: string
+    required: false
+  - name: year
+    in: query
+    type: string
+    required: false
+definitions:
+  Production:
+    type: object
+    properties:
+      _id:
+        type: string
+      product:
+        type: string
+      type:
+        type: string
+      year:
+        type: number
+      amount:
+        type: number
+  NewProduction:
+    type: object
+    properties:
+      product:
+        type: string
+      type:
+        type: string
+      year:
+        type: number
+      amount:
+        type: number
+  Message:
+    type: object
+    properties:
+      status:
+        type: number
+      message:
+        type: string
+responses:
+  200:
+    description: Retorno da lista dos regristros sobre produções
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/Production'
+  400:
+    description: Erro ao buscar os registros sobre produção
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Lista de produções não encontrado
+    schema:
+      $ref: '#/definitions/Message'

@@ -1,0 +1,22 @@
+Remover registro sobre exportação
+---
+tags:
+  - exportation
+parameters:
+  - name: exportation_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Retorno de sucesso na exclusão do registro sobre exportação
+    schema:
+      $ref: '#/definitions/Message'
+  400:
+    description: Erro ao excluir o registro sobre exportação
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Registro sobre exportação não encontrado
+    schema:
+      $ref: '#/definitions/Message'

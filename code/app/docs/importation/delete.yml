@@ -1,0 +1,22 @@
+Remover registro sobre importação
+---
+tags:
+  - importation
+parameters:
+  - name: importation_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Retorno de sucesso na exclusão do registro sobre importação
+    schema:
+      $ref: '#/definitions/Message'
+  400:
+    description: Erro ao excluir o registro sobre importação
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Registro sobre importação não encontrado
+    schema:
+      $ref: '#/definitions/Message'

@@ -1,0 +1,22 @@
+Remover registro sobre processamento
+---
+tags:
+  - processing
+parameters:
+  - name: processing_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Retorno de sucesso na exclusão do registro sobre processamento
+    schema:
+      $ref: '#/definitions/Message'
+  400:
+    description: Erro ao excluir o registro sobre processamento
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Registro sobre processamento não encontrado
+    schema:
+      $ref: '#/definitions/Message'

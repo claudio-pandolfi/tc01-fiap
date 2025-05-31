@@ -1,0 +1,22 @@
+Retornar registro sobre importação
+---
+tags:
+  - importation
+parameters:
+  - name: importation_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Retorno de um registro sobre importação
+    schema:
+      $ref: '#/definitions/Importation'
+  400:
+    description: Erro ao localizar o registro sobre importação
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Registro sobre importação não encontrado
+    schema:
+      $ref: '#/definitions/Message'

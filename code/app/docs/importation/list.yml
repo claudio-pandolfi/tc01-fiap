@@ -1,0 +1,61 @@
+Listar registros sobre importações
+---
+tags:
+  - importation
+parameters:
+  - name: country
+    in: query
+    type: string
+    required: false
+  - name: product
+    in: query
+    type: string
+    required: false
+  - name: year
+    in: query
+    type: string
+    required: false
+definitions:
+  Importation:
+    type: object
+    properties:
+      _id:
+        type: string
+      country:
+        type: string
+      product:
+        type: string
+      year:
+        type: number
+      quantity:
+        type: number
+      amount:
+        type: number
+  NewImportation:
+    type: object
+    properties:
+      country:
+        type: string
+      product:
+        type: string
+      year:
+        type: number
+      quantity:
+        type: number
+      amount:
+        type: number
+responses:
+  200:
+    description: Retorno da lista dos regristros sobre importação
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/Importation'
+  400:
+    description: Erro ao buscar os registros sobre importação
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Lista de importações não encontrado
+    schema:
+      $ref: '#/definitions/Message'

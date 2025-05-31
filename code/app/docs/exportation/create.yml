@@ -1,0 +1,19 @@
+Cadastrar registro sobre exportação
+---
+tags:
+  - exportation
+parameters:
+  - name: 'body'
+    in: 'body'
+    required: true,
+    schema: 
+      $ref: '#/definitions/NewExportation'
+responses:
+  200:
+    description: Retorno do cadastro um registro sobre exportação
+    schema:
+      $ref: '#/definitions/NewExportation'
+  400:
+    description: Erro ao cadastrar o registro sobre exportação
+    schema:
+      $ref: '#/definitions/Message'

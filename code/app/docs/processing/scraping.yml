@@ -1,0 +1,61 @@
+Raspagem dos registros de processamento
+---
+tags:
+  - processing
+parameters:
+  - name: year
+    in: query
+    type: string
+    required: true
+    description: Anos separado por vírgula (Ex. _**2022, 2023**_). Para buscar todos os anos utilize o valor _**all**_
+    default: 2023
+  - name: classification
+    in: query
+    type: string
+    required: true
+    description: Classificação separada por vírgula (Ex. _**viniferas, american**_). Para buscar todos os anos utilize o valor _**all**_
+    default: viniferas
+definitions:
+  JobProcessingInfo:
+    type: object
+    properties:
+      job_id:
+        type: string
+      job_name:
+        type: string
+      classification:
+        type: string
+      year:
+        type: number
+  JobProcessingResponse:
+    type: object
+    properties:
+      status:
+        type: number
+      message:
+        type: string
+      jobs:
+        type: array
+        items:
+          $ref: '#/definitions/JobProcessingInfo'
+responses:
+  200:
+    description: Agendamento da raspagem dos registros sobre processamento
+    schema:
+      $ref: '#/definitions/JobProcessingResponse'
+  "400 / 1":
+    description: Erro ao agendar a raspagem sobre processamento
+    schema:
+      $ref: '#/definitions/Message'
+  "400 / 2":
+    description: Ano inválido. (> 1970 ou < 2023)
+    schema:
+      $ref: '#/definitions/Message'
+  "400 / 3":
+    description: Classificação inválida. Opções disponíveis -> _**all, viniferas, american, table_grape, unrated.**_'
+    schema:
+      $ref: '#/definitions/Message'
+  404:
+    description: Não foi possível localizar os dados para a raspagem
+    schema:
+      $ref: '#/definitions/Message'

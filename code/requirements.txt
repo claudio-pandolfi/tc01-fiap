@@ -1,0 +1,11 @@
+flask
+flask-restful
+flask-cors
+mongoengine
+python-dotenv
+flasgger
+requests
+beautifulsoup4
+redis
+rq
+flask-jwt-extended
