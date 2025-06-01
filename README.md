@@ -86,9 +86,9 @@ Segue abaixo diagrama da arquitetura do projeto:
 
 
 ### Fluxo base da gestão dos dados (CRUD)
-![TC1.base.png](TC1.base.png)
+![TC.base.png](TC.base.png)
 
 
 ### Fluxo do scraping dos dados
-![TC1.scraping.png](TC1.scraping.png)
+![TC.scraping.png](TC.scraping.png)
 
