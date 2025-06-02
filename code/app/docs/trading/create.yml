@@ -2,18 +2,28 @@ Cadastrar registro sobre comercialização
 ---
 tags:
   - trading
-parameters:
-  - name: 'body'
-    in: 'body'
-    required: true,
-    schema: 
-      $ref: '#/components/schemas/NewTrading'
+requestBody:
+  description: Dados de produção
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/NewTrading'
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno do cadastro um registro sobre comercialização
-    schema:
-      $ref: '#/components/schemas/NewTrading'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/NewTrading'
   400:
-    description: Erro ao cadastrar o registro sobre comercialização
-    schema:
-      $ref: '#/components/schemas/Message'
+    description: Erro ao cadastrar os registros sobre comercialização 
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao cadastrar o registro sobre comercialização'

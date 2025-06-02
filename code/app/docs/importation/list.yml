@@ -22,7 +22,7 @@ security:
   - BearerAuth: []
 responses:
   200:
-    description: Retorno da lista dos regristros sobre importação
+    description: Retorno da lista dos registros sobre importação
     content:
       application/json:
         schema:

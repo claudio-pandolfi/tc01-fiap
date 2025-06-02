@@ -7,21 +7,38 @@ parameters:
     in: path
     type: string
     required: true
-  - name: 'body'
-    in: 'body'
-    required: true,
-    schema: 
-      $ref: '#/components/schemas/NewTrading'
+    description: Código de comercialização
+security:
+  - BearerAuth: []
+requestBody:
+  description: Dados de produção
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/NewTrading'
 responses:
   200:
     description: Retorno da atualização de registro sobre comercialização
-    schema:
-      $ref: '#/components/schemas/NewTrading'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/NewTrading'
   400:
-    description: Erro ao atualizar o registro sobre comercialização
-    schema:
-      $ref: '#/components/schemas/Message'
+    description: Erro ao atualizar os registros sobre comercialização 
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao atualizar o registro sobre comercialização'
   404:
     description: Registro sobre comercialização não encontrado
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 404
+            message: 'Registro sobre comercialização não encontrado'

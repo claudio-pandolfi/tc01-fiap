@@ -42,7 +42,7 @@ definitions:
         type: number
 responses:
   200:
-    description: Retorno da lista dos regristros sobre produções
+    description: Retorno da lista dos registros sobre produções
     content:
       application/json:
         schema:

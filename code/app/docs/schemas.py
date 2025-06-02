@@ -160,6 +160,25 @@ def get_schemas():
                 "amount": { "type" : "number"}
             }
         },
+        "Trading" : {
+            "type": "object",
+            "properties": {
+                "_id": { "type" : "string"},
+                "product": { "type" : "string"},
+                "type": { "type" : "string"},
+                "year": { "type" : "number"},
+                "amount": { "type" : "number"}
+            }
+        },
+        "NewTrading" : {
+            "type": "object",
+            "properties": {
+                "product": { "type" : "string"},
+                "type": { "type" : "string"},
+                "year": { "type" : "number"},
+                "amount": { "type" : "number"}
+            }
+        },
         "JobInfo" : {
             "type": "object",
             "properties": {
@@ -178,5 +197,5 @@ def get_schemas():
                         '$ref': '#/components/schemas/JobInfo'
                     },
             }
-        },
+        }
     }

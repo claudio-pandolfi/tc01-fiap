@@ -7,16 +7,31 @@ parameters:
     in: path
     type: string
     required: true
+    description: Código de comercialização
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno de um registro sobre comercialização
-    schema:
-      $ref: '#/components/schemas/Trading'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Trading'
   400:
-    description: Erro ao localizar o registro sobre comercialização
-    schema:
-      $ref: '#/components/schemas/Message'
+    description: Erro ao localizar os registros sobre comercialização 
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao localizar o registro sobre comercialização'
   404:
     description: Registro sobre comercialização não encontrado
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 404
+            message: 'Registro sobre comercialização não encontrado'

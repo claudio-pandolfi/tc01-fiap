@@ -14,3 +14,6 @@ class Auth(Resource):
         access_token = create_access_token(identity=username)
         return { 'status': 200, 'access_token' : access_token}, 200
 
+class Home(Resource):
+    def get(self):
+        return {'message': 'Welcome'}

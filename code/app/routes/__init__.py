@@ -1,5 +1,5 @@
 from flask_restful import Api
-from app.resources.auth import Auth
+from app.resources.auth import Auth, Home
 from app.routes.exportation import exportation_routes
 from app.routes.importation import importation_routes
 from app.routes.processing import processing_routes
@@ -10,6 +10,7 @@ def register_routes(app):
     api = Api(app)
     
     api.add_resource(Auth, '/auth')
+    api.add_resource(Home, '/')
     exportation_routes(api)
     importation_routes(api)
     processing_routes(api)

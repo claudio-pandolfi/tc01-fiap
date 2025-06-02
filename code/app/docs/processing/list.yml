@@ -17,7 +17,7 @@ security:
   - BearerAuth: []
 responses:
   200:
-    description: Retorno da lista dos regristros sobre processamento
+    description: Retorno da lista dos registros sobre processamento
     content:
       application/json:
         schema:

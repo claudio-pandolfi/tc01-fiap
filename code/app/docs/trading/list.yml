@@ -7,47 +7,38 @@ parameters:
     in: query
     type: string
     required: false
+    description: Nome do produto
   - name: year
     in: query
     type: string
     required: false
-definitions:
-  Trading:
-    type: object
-    properties:
-      _id:
-        type: string
-      product:
-        type: string
-      type:
-        type: string
-      year:
-        type: number
-      amount:
-        type: number
-  NewTrading:
-    type: object
-    properties:
-      product:
-        type: string
-      type:
-        type: string
-      year:
-        type: number
-      amount:
-        type: number
+    description: Ano de comercialização
+security:
+  - BearerAuth: []
 responses:
   200:
-    description: Retorno da lista dos regristros sobre comercializações
-    schema:
-      type: array
-      items:
-        $ref: '#/components/schemas/Trading'
+    description: Retorno da lista dos registro sobre comercializações
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trading'
   400:
     description: Erro ao buscar os registros sobre comercialização 
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao localizar o registro sobre comercialização'
   404:
     description: Lista de comercialização não encontrado
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 404
+            message: 'Registro sobre comercialização não encontrado'

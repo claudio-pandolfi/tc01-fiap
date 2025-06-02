@@ -9,41 +9,43 @@ parameters:
     required: true
     description: Anos separado por vírgula (Ex. _**2022, 2023**_). Para buscar todos os anos utilize o valor _**all**_
     default: 2023
-definitions:
-  JobInfo:
-    type: object
-    properties:
-      job_id:
-        type: string
-      job_name:
-        type: string
-      year:
-        type: number
-  JobResponse:
-    type: object
-    properties:
-      status:
-        type: number
-      message:
-        type: string
-      jobs:
-        type: array
-        items:
-          $ref: '#/components/schemas/JobInfo'
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Agendamento da raspagem dos registros sobre comercialização
-    schema:
-      $ref: '#/components/schemas/JobResponse'
-  "400 / 1":
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/JobResponse'
+        example:
+          status: 200
+          message: 'Agendamento sobre comercialização realizado com sucesso'
+          jobs: 
+            - job_id: 123
+              job_name: 'scrapingTask'
+              year: 2023
+  400:
     description: Erro ao agendar a raspagem sobre comercialização
-    schema:
-      $ref: '#/components/schemas/Message'
-  "400 / 2":
-    description: Ano inválido. (> 1970 ou < 2023)
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        examples:
+          Default:
+            value:
+              status: 401
+              message: 'Erro ao agendar a raspagem sobre comercialização'
+          Ano:
+            value:
+              status: 401
+              message: 'Ano inválido. Opções disponíveis: all, maior que 1970 ou menor que 2023.'
   404:
     description: Não foi possível localizar os dados para a raspagem
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 401
+          message: 'Não foi possível localizar os dados para a raspagem'
