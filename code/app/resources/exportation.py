@@ -98,7 +98,7 @@ class ExportationScraping(Resource):
     @jwt_required()
     @swag_from('../docs/exportation/scraping.yml', methods=["GET"])
     def get(self):
-        try:
+        # try:
             products = ['wine']
             years = [2023]
 
