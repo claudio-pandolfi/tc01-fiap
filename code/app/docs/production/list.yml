@@ -7,10 +7,14 @@ parameters:
     in: query
     type: string
     required: false
+    description: Nome do produto
   - name: year
     in: query
     type: string
     required: false
+    description: Ano de produção
+security:
+  - BearerAuth: []
 definitions:
   Production:
     type: object
@@ -39,15 +43,27 @@ definitions:
 responses:
   200:
     description: Retorno da lista dos regristros sobre produções
-    schema:
-      type: array
-      items:
-        $ref: '#/components/schemas/Production'
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Production'
   400:
-    description: Erro ao buscar os registros sobre produção
-    schema:
-      $ref: '#/components/schemas/Message'
+    description: Erro ao atualizar o registro sobre produção
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao localizar o registro sobre produção'
   404:
-    description: Lista de produções não encontrado
-    schema:
-      $ref: '#/components/schemas/Message'
+    description: Registro sobre produção não encontrado
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 404
+            message: 'Registro sobre produção não encontrado'

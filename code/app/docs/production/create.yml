@@ -2,18 +2,30 @@ Cadastrar registro sobre produção
 ---
 tags:
   - production
-parameters:
-  - name: 'body'
-    in: 'body'
-    required: true,
-    schema: 
-      $ref: '#/components/schemas/NewProduction'
+requestBody:
+  description: Dados de produção
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/NewProduction'
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno do cadastro um registro sobre produção
-    schema:
-      $ref: '#/components/schemas/NewProduction'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/NewProduction'
   400:
     description: Erro ao cadastrar o registro sobre produção
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        example:
+          status: 400
+          message: 'Erro ao cadastrar o registro sobre produção'

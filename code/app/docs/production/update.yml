@@ -7,21 +7,38 @@ parameters:
     in: path
     type: string
     required: true
-  - name: 'body'
-    in: 'body'
-    required: true,
-    schema: 
-      $ref: '#/components/schemas/NewProduction'
+    description: Código de produção
+requestBody:
+  description: Dados de produção
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/NewProduction'
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno da atualização de registro sobre produção
-    schema:
-      $ref: '#/components/schemas/NewProduction'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/NewProduction'
   400:
     description: Erro ao atualizar o registro sobre produção
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao localizar o registro sobre produção'
   404:
     description: Registro sobre produção não encontrado
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 404
+            message: 'Registro sobre produção não encontrado'

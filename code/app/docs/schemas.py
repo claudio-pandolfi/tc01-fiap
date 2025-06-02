@@ -140,5 +140,43 @@ def get_schemas():
                         '$ref': '#/components/schemas/JobProcessingInfo'
                     },
             }
-        }
+        },
+        "Production" : {
+            "type": "object",
+            "properties": {
+                "_id": { "type" : "string"},
+                "product": { "type" : "string"},
+                "type": { "type" : "string"},
+                "year": { "type" : "number"},
+                "amount": { "type" : "number"}
+            }
+        },
+        "NewProduction" : {
+            "type": "object",
+            "properties": {
+                "product": { "type" : "string"},
+                "type": { "type" : "string"},
+                "year": { "type" : "number"},
+                "amount": { "type" : "number"}
+            }
+        },
+        "JobInfo" : {
+            "type": "object",
+            "properties": {
+                "job_id": { "type" : "string"},
+                "job_name": { "type" : "string"},
+                "year": { "type" : "number"}
+            }
+        },
+        "JobResponse" : {
+            "type": "object",
+            "properties": {
+                "status": { "type" : "string"},
+                "message": { "type" : "string"},
+                'jobs': {
+                        'type': 'array',
+                        '$ref': '#/components/schemas/JobInfo'
+                    },
+            }
+        },
     }

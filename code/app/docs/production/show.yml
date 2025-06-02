@@ -7,16 +7,31 @@ parameters:
     in: path
     type: string
     required: true
+    description: Código de produção
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno de um registro sobre produção
-    schema:
-      $ref: '#/components/schemas/Production'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Production'
   400:
-    description: Erro ao localizar o registro sobre produção
-    schema:
-      $ref: '#/components/schemas/Message'
+    description: Erro ao atualizar o registro sobre produção
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao localizar o registro sobre produção'
   404:
     description: Registro sobre produção não encontrado
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 404
+            message: 'Registro sobre produção não encontrado'
