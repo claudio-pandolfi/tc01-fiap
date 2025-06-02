@@ -3,3 +3,5 @@
 .vercel
 
 **/__pycache__/
+
+.env
