@@ -137,11 +137,11 @@ class ExportationScraping(Resource):
                     jobs.append({ 'job_id': job.id, 'job_name': 'scrapingExportationTask', 'product': product, 'year': year})
             
             return { 'status': 200, 'message' : 'Agendamento sobre exportação realizado com sucesso', 'jobs': jobs }, 200            
-        except ProductTypeException as productTypeEx:
-            return { 'status': 400, 'message' : str(productTypeEx)}, 400
-        except YearException as yearEx:
-            return { 'status': 400, 'message' : str(yearEx)}, 400
-        except ValueError:
-            return { 'status': 400, 'message' : f'Ano inválido. Opções disponíveis: all, maior que {YearEnum['MIN'].value} ou menor que {YearEnum['EXPORTATION_MAX'].value}.'}, 400
-        except:
-           return { 'status': 400, 'message' : 'Erro ao buscar os registros sobre exportação.'}, 400
+        # except ProductTypeException as productTypeEx:
+        #     return { 'status': 400, 'message' : str(productTypeEx)}, 400
+        # except YearException as yearEx:
+        #     return { 'status': 400, 'message' : str(yearEx)}, 400
+        # except ValueError:
+        #     return { 'status': 400, 'message' : f'Ano inválido. Opções disponíveis: all, maior que {YearEnum['MIN'].value} ou menor que {YearEnum['EXPORTATION_MAX'].value}.'}, 400
+        # except:
+        #    return { 'status': 400, 'message' : 'Erro ao buscar os registros sobre exportação.'}, 400
