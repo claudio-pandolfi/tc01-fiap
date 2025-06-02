@@ -29,21 +29,21 @@ definitions:
       jobs:
         type: array
         items:
-          $ref: '#/definitions/JobInfo'
+          $ref: '#/components/schemas/JobInfo'
 responses:
   200:
     description: Agendamento da raspagem dos registros sobre comercialização
     schema:
-      $ref: '#/definitions/JobResponse'
+      $ref: '#/components/schemas/JobResponse'
   "400 / 1":
     description: Erro ao agendar a raspagem sobre comercialização
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'
   "400 / 2":
     description: Ano inválido. (> 1970 ou < 2023)
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'
   404:
     description: Não foi possível localizar os dados para a raspagem
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'

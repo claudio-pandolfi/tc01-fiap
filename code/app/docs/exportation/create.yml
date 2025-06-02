@@ -2,18 +2,21 @@ Cadastrar registro sobre exportação
 ---
 tags:
   - exportation
-parameters:
-  - name: 'body'
-    in: 'body'
-    required: true,
-    schema: 
-      $ref: '#/definitions/NewExportation'
+requestBody:
+  description: Dados da exportação
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/NewExportation'
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno do cadastro um registro sobre exportação
     schema:
-      $ref: '#/definitions/NewExportation'
+      $ref: '#/components/schemas/NewExportation'
   400:
     description: Erro ao cadastrar o registro sobre exportação
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'

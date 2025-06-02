@@ -11,12 +11,12 @@ responses:
   200:
     description: Retorno de um registro sobre produção
     schema:
-      $ref: '#/definitions/Production'
+      $ref: '#/components/schemas/Production'
   400:
     description: Erro ao localizar o registro sobre produção
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'
   404:
     description: Registro sobre produção não encontrado
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'

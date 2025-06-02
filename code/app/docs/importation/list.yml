@@ -7,55 +7,43 @@ parameters:
     in: query
     type: string
     required: false
+    description: Nome do país
   - name: product
     in: query
     type: string
     required: false
+    description: Nome do produto
   - name: year
     in: query
     type: string
     required: false
-definitions:
-  Importation:
-    type: object
-    properties:
-      _id:
-        type: string
-      country:
-        type: string
-      product:
-        type: string
-      year:
-        type: number
-      quantity:
-        type: number
-      amount:
-        type: number
-  NewImportation:
-    type: object
-    properties:
-      country:
-        type: string
-      product:
-        type: string
-      year:
-        type: number
-      quantity:
-        type: number
-      amount:
-        type: number
+    description: Ano da exportação
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno da lista dos regristros sobre importação
-    schema:
-      type: array
-      items:
-        $ref: '#/definitions/Importation'
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Importation'
   400:
     description: Erro ao buscar os registros sobre importação
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao buscar os registros sobre importação'
   404:
     description: Lista de importações não encontrado
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Lista de importações não encontrado'

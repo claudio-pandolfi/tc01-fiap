@@ -7,16 +7,31 @@ parameters:
     in: path
     type: string
     required: true
+    description: Código da exportação
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno de um registro sobre exportação
-    schema:
-      $ref: '#/definitions/Exportation'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Exportation'
   400:
     description: Erro ao localizar o registro sobre exportação
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 401
+          message: 'Erro ao localizar o registro sobre exportação'
   404:
     description: Registro sobre exportação não encontrado
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 401
+          message: 'Registro sobre exportação não encontrado'

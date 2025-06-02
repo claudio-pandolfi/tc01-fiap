@@ -6,17 +6,32 @@ parameters:
   - name: importation_id
     in: path
     type: string
+    description: Código da importação
     required: true
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno de um registro sobre importação
-    schema:
-      $ref: '#/definitions/Importation'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Importation'
   400:
     description: Erro ao localizar o registro sobre importação
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao localizar o registro sobre importação'
   404:
     description: Registro sobre importação não encontrado
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 404
+            message: 'Registro sobre importação não encontrado'

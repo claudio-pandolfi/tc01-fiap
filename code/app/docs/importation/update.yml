@@ -7,21 +7,38 @@ parameters:
     in: path
     type: string
     required: true
-  - name: 'body'
-    in: 'body'
-    required: true,
-    schema: 
-      $ref: '#/definitions/NewImportation'
+    description: Código da importação
+requestBody:
+  description: Dados da importação
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/NewImportation'
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno da atualização de registro sobre importação
-    schema:
-      $ref: '#/definitions/NewImportation'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/NewImportation'
   400:
     description: Erro ao atualizar o registro sobre importação
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao localizar o registro sobre importação'
   404:
     description: Registro sobre importação não encontrado
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 404
+            message: 'Registro sobre importação não encontrado'

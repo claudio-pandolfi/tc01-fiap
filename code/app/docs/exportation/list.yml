@@ -7,57 +7,52 @@ parameters:
     in: query
     type: string
     required: false
+    description: Nome do país
   - name: product
     in: query
     type: string
     required: false
+    description: Nome do produto
   - name: year
     in: query
     type: string
     required: false
+    description: Ano da exportação
 security:
-  - bearerAuth: []
-definitions:
-  Exportation:
-    type: object
-    properties:
-      _id:
-        type: string
-      country:
-        type: string
-      product:
-        type: string
-      year:
-        type: number
-      quantity:
-        type: number
-      amount:
-        type: number
-  NewExportation:
-    type: object
-    properties:
-      country:
-        type: string
-      product:
-        type: string
-      year:
-        type: number
-      quantity:
-        type: number
-      amount:
-        type: number
+  - BearerAuth: []
 responses:
   200:
     description: Retorno da lista dos registros sobre exportações
-    schema:
-      type: array
-      items:
-        $ref: '#/definitions/Exportation'
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Exportation'
   400:
     description: Erro ao buscar os registros sobre exportação
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao buscar os registros sobre exportação'
+  401:
+    description: Missing Authorization Header
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 401
+          message: 'Usuário ou senha inválida'
   404:
     description: Lista de exportações não encontrado
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 404
+            message: 'Lista de exportações não encontrado'

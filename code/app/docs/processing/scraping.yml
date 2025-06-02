@@ -37,25 +37,25 @@ definitions:
       jobs:
         type: array
         items:
-          $ref: '#/definitions/JobProcessingInfo'
+          $ref: '#/components/schemas/JobProcessingInfo'
 responses:
   200:
     description: Agendamento da raspagem dos registros sobre processamento
     schema:
-      $ref: '#/definitions/JobProcessingResponse'
+      $ref: '#/components/schemas/JobProcessingResponse'
   "400 / 1":
     description: Erro ao agendar a raspagem sobre processamento
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'
   "400 / 2":
     description: Ano inválido. (> 1970 ou < 2023)
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'
   "400 / 3":
     description: Classificação inválida. Opções disponíveis -> _**all, viniferas, american, table_grape, unrated.**_'
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'
   404:
     description: Não foi possível localizar os dados para a raspagem
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'

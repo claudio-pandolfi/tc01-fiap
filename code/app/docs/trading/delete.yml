@@ -11,12 +11,12 @@ responses:
   200:
     description: Retorno de sucesso na exclusão do registro sobre comercialização
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'
   400:
     description: Erro ao excluir o registro sobre comercialização
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'
   404:
     description: Registro sobre comercialização não encontrado
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'

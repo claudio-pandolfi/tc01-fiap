@@ -7,21 +7,38 @@ parameters:
     in: path
     type: string
     required: true
-  - name: 'body'
-    in: 'body'
-    required: true,
-    schema: 
-      $ref: '#/definitions/NewExportation'
+    description: Código da exportação
+requestBody:
+  description: Dados da exportação
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/NewExportation'
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno da atualização de registro sobre exportação
-    schema:
-      $ref: '#/definitions/NewExportation'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/NewExportation'
   400:
     description: Erro ao atualizar o registro sobre exportação
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 401
+          message: 'Erro ao atualizar o registro sobre exportação'
   404:
     description: Registro sobre exportação não encontrado
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 401
+          message: 'Registro sobre exportação não encontrado'

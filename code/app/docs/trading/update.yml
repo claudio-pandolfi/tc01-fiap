@@ -11,17 +11,17 @@ parameters:
     in: 'body'
     required: true,
     schema: 
-      $ref: '#/definitions/NewTrading'
+      $ref: '#/components/schemas/NewTrading'
 responses:
   200:
     description: Retorno da atualização de registro sobre comercialização
     schema:
-      $ref: '#/definitions/NewTrading'
+      $ref: '#/components/schemas/NewTrading'
   400:
     description: Erro ao atualizar o registro sobre comercialização
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'
   404:
     description: Registro sobre comercialização não encontrado
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'

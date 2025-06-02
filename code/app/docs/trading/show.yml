@@ -11,12 +11,12 @@ responses:
   200:
     description: Retorno de um registro sobre comercialização
     schema:
-      $ref: '#/definitions/Trading'
+      $ref: '#/components/schemas/Trading'
   400:
     description: Erro ao localizar o registro sobre comercialização
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'
   404:
     description: Registro sobre comercialização não encontrado
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'

@@ -2,6 +2,7 @@ from app.auth import register_auth
 from app.config import Config
 from app.routes import register_routes
 from app.models import register_db_connection
+from app.docs.schemas import get_schemas
 from flasgger import Swagger
 from flask import Flask
 
@@ -22,15 +23,16 @@ swagger_config = {
     "static_url_path": "/flasgger_static",
     "swagger_ui": True,
     "components": {
-        "securitySchemes": {
-            "bearerAuth": {
+        "securitySchemes":{
+            "BearerAuth": {
                 "type": 'http',
                 "scheme": 'bearer'
             }
         },
+        "schemas" : get_schemas()
     },
     "security": {
-        "bearerAuth": []
+        "BearerAuth": []
     },
     "specs_route": "/docs/"
 }

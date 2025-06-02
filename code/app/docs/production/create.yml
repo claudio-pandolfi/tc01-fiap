@@ -7,13 +7,13 @@ parameters:
     in: 'body'
     required: true,
     schema: 
-      $ref: '#/definitions/NewProduction'
+      $ref: '#/components/schemas/NewProduction'
 responses:
   200:
     description: Retorno do cadastro um registro sobre produção
     schema:
-      $ref: '#/definitions/NewProduction'
+      $ref: '#/components/schemas/NewProduction'
   400:
     description: Erro ao cadastrar o registro sobre produção
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'

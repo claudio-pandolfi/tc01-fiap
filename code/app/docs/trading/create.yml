@@ -7,13 +7,13 @@ parameters:
     in: 'body'
     required: true,
     schema: 
-      $ref: '#/definitions/NewTrading'
+      $ref: '#/components/schemas/NewTrading'
 responses:
   200:
     description: Retorno do cadastro um registro sobre comercialização
     schema:
-      $ref: '#/definitions/NewTrading'
+      $ref: '#/components/schemas/NewTrading'
   400:
     description: Erro ao cadastrar o registro sobre comercialização
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'

@@ -2,18 +2,30 @@ Cadastrar registro sobre importação
 ---
 tags:
   - importation
-parameters:
-  - name: 'body'
-    in: 'body'
-    required: true,
-    schema: 
-      $ref: '#/definitions/NewImportation'
+requestBody:
+  description: Dados da importação
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/NewImportation'
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno do cadastro um registro sobre importação
-    schema:
-      $ref: '#/definitions/NewImportation'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/NewImportation'
   400:
     description: Erro ao cadastrar o registro sobre importação
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Importation'
+        example:
+          status: 400
+          message: 'Erro ao cadastrar o registro sobre importação'

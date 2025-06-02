@@ -11,26 +11,32 @@ parameters:
     in: query
     type: string
     required: true
-definitions:
-  Login:
-    type: object
-    properties:
-      status:
-        type: string
-      access_token:
-        type: string
 responses:
   200:
     description: Retorno do chave de acesso
-    schema:
-      type: array
-      items:
-        $ref: '#/definitions/Login'
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/Login'
+          example:
+            status: 200
+            access_token: '##### access_token #####'
   401:
     description: Usuário ou senha inválida
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 401
+          message: 'Usuário ou senha inválida'
   400:
     description: Erro ao gerar a chave de acesso
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 400
+          message: 'Erro ao gerar a chave de acesso'

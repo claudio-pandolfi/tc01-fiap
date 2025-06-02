@@ -15,6 +15,8 @@ parameters:
     required: true
     description: Produtos separados por vírgula (Ex. _**wine, juice**_). Para buscar todos os anos utilize o valor _**all**_
     default: wine
+security:
+  - BearerAuth: []
 definitions:
   JobImportationInfo:
     type: object
@@ -37,25 +39,47 @@ definitions:
       jobs:
         type: array
         items:
-          $ref: '#/definitions/JobImportationInfo'
+          $ref: '#/components/schemas/JobImportationInfo'
 responses:
   200:
     description: Agendamento da raspagem dos registros sobre importação
-    schema:
-      $ref: '#/definitions/JobImportationResponse'
-  "400 / 1":
-    description: Erro ao agendar a raspagem sobre importação
-    schema:
-      $ref: '#/definitions/Message'
-  "400 / 2":
-    description: Ano inválido. (> 1970 ou < 2023)
-    schema:
-      $ref: '#/definitions/Message'
-  "400 / 3":
-    description: Produto inválido. Opções disponíveis -> _**all, wine, sparkling, grape, raisin, juice.**_'
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/JobImportationResponse'
+        example:
+          status: 200
+          message: 'Agendamento sobre importação realizado com sucesso'
+          jobs: 
+            - job_id: 123
+              job_name: 'scrapingTask'
+              product: wine
+              year: 2023
+  400:
+    description: Erro ao agendar a raspagem sobre exportação
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        examples:
+          Default:
+            value:
+              status: 401
+              message: 'Erro ao agendar a raspagem sobre exportação'
+          Ano:
+            value:
+              status: 401
+              message: 'Ano inválido. Opções disponíveis: all, maior que 1970 ou menor que 2024.'
+          Produto:
+            value:
+              status: 401
+              message: 'Produto inválido. Opções disponíveis: all, wine, sparkling, grape, juice.'
   404:
     description: Não foi possível localizar os dados para a raspagem
-    schema:
-      $ref: '#/definitions/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 401
+          message: 'Usuário ou senha inválida'

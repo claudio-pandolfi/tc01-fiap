@@ -42,12 +42,12 @@ responses:
     schema:
       type: array
       items:
-        $ref: '#/definitions/Trading'
+        $ref: '#/components/schemas/Trading'
   400:
     description: Erro ao buscar os registros sobre comercialização 
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'
   404:
     description: Lista de comercialização não encontrado
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'

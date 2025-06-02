@@ -9,7 +9,8 @@ class Config:
             'title': os.getenv('SWAGGER_TITLE'),
             'uiversion': int(os.getenv('SWAGGER_UI_VERSION', 3)),
             'version': os.getenv('API_VERSION'),
-            'description': os.getenv('API_DESCRIPTION')
+            'description': os.getenv('API_DESCRIPTION'),
+            'openapi' : '3.0.2'
         }
         self.MONGODB_URL = os.getenv('MONGODB_URL')
         self.DEBUG = os.getenv('FLASK_DEBUG')

@@ -11,12 +11,12 @@ responses:
   200:
     description: Retorno de um registro sobre processamento
     schema:
-      $ref: '#/definitions/Processing'
+      $ref: '#/components/schemas/Processing'
   400:
     description: Erro ao localizar o registro sobre processamento
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'
   404:
     description: Registro sobre processamento não encontrado
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'

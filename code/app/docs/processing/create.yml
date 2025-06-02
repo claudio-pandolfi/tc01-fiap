@@ -7,13 +7,13 @@ parameters:
     in: 'body'
     required: true,
     schema: 
-      $ref: '#/definitions/NewProcessing'
+      $ref: '#/components/schemas/NewProcessing'
 responses:
   200:
     description: Retorno do cadastro um registro sobre processamento
     schema:
-      $ref: '#/definitions/NewProcessing'
+      $ref: '#/components/schemas/NewProcessing'
   400:
     description: Erro ao cadastrar o registro sobre processamento
     schema:
-      $ref: '#/definitions/Message'
+      $ref: '#/components/schemas/Message'
