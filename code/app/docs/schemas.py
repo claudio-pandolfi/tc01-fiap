@@ -41,6 +41,26 @@ def get_schemas():
                 "amount": { "type" : "number"}
             }
         },
+        "JobExportationInfo" : {
+            "type": "object",
+            "properties": {
+                "job_id": { "type" : "string"},
+                "job_name": { "type" : "string"},
+                "product": { "type" : "string"},
+                "year": { "type" : "number"}
+            }
+        },
+        "JobExportationResponse" : {
+            "type": "object",
+            "properties": {
+                "status": { "type" : "string"},
+                "message": { "type" : "string"},
+                'jobs': {
+                        'type': 'array',
+                        '$ref': '#/components/schemas/JobExportationInfo'
+                    },
+            }
+        },
         "Importation" : {
             "type": "object",
             "properties": {
@@ -62,7 +82,7 @@ def get_schemas():
                 "amount": { "type" : "number"}
             }
         },
-        "JobExportationInfo" : {
+        "JobImportationInfo" : {
             "type": "object",
             "properties": {
                 "job_id": { "type" : "string"},
@@ -71,14 +91,53 @@ def get_schemas():
                 "year": { "type" : "number"}
             }
         },
-        "JobExportationResponse" : {
+        "JobImportationResponse" : {
             "type": "object",
             "properties": {
                 "status": { "type" : "string"},
                 "message": { "type" : "string"},
                 'jobs': {
                         'type': 'array',
-                        '$ref': '#/components/schemas/JobExportationInfo'
+                        '$ref': '#/components/schemas/JobImportationInfo'
+                    },
+            }
+        },
+        "Processing" : {
+            "type": "object",
+            "properties": {
+                "_id": { "type" : "string"},
+                "cultivation": { "type" : "string"},
+                "type": { "type" : "string"},
+                "year": { "type" : "number"},
+                "quantity": { "type" : "number"}
+            }
+        },
+        "NewProcessing" : {
+            "type": "object",
+            "properties": {
+                "cultivation": { "type" : "string"},
+                "type": { "type" : "string"},
+                "year": { "type" : "number"},
+                "quantity": { "type" : "number"}
+            }
+        },
+        "JobProcessingInfo" : {
+            "type": "object",
+            "properties": {
+                "job_id": { "type" : "string"},
+                "job_name": { "type" : "string"},
+                "classification": { "type" : "string"},
+                "year": { "type" : "number"}
+            }
+        },
+        "JobProcessingResponse" : {
+            "type": "object",
+            "properties": {
+                "status": { "type" : "string"},
+                "message": { "type" : "string"},
+                'jobs': {
+                        'type': 'array',
+                        '$ref': '#/components/schemas/JobProcessingInfo'
                     },
             }
         }

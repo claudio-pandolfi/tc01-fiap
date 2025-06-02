@@ -7,47 +7,38 @@ parameters:
     in: query
     type: string
     required: false
+    description: Nome do produto
   - name: year
     in: query
     type: string
     required: false
-definitions:
-  Processing:
-    type: object
-    properties:
-      _id:
-        type: string
-      cultivation:
-        type: string
-      type:
-        type: string
-      year:
-        type: number
-      quantity:
-        type: number
-  NewProcessing:
-    type: object
-    properties:
-      cultivation:
-        type: string
-      type:
-        type: string
-      year:
-        type: number
-      quantity:
-        type: number
+    description: Ano de processamento
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno da lista dos regristros sobre processamento
-    schema:
-      type: array
-      items:
-        $ref: '#/components/schemas/Processing'
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Processing'
   400:
     description: Erro ao buscar os registros sobre processamento
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao buscar os registros sobre processamento'
   404:
     description: Lista de processamentos não encontrado
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Lista de processamentos não encontrado'

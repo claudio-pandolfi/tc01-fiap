@@ -59,4 +59,4 @@ responses:
           $ref: '#/components/schemas/Message'
         example:
           status: 401
-          message: 'Usuário ou senha inválida'
+          message: 'Não foi possível localizar os dados para a raspagem'

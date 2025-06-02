@@ -2,18 +2,30 @@ Cadastrar registro sobre processamento
 ---
 tags:
   - processing
-parameters:
-  - name: 'body'
-    in: 'body'
-    required: true,
-    schema: 
-      $ref: '#/components/schemas/NewProcessing'
+requestBody:
+  description: Dados de processamento
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/NewProcessing'
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno do cadastro um registro sobre processamento
-    schema:
-      $ref: '#/components/schemas/NewProcessing'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/NewProcessing'
   400:
     description: Erro ao cadastrar o registro sobre processamento
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        example:
+          status: 400
+          message: 'Erro ao cadastrar o registro sobre processamento'

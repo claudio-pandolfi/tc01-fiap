@@ -17,29 +17,6 @@ parameters:
     default: wine
 security:
   - BearerAuth: []
-definitions:
-  JobImportationInfo:
-    type: object
-    properties:
-      job_id:
-        type: string
-      job_name:
-        type: string
-      product:
-        type: string
-      year:
-        type: number
-  JobImportationResponse:
-    type: object
-    properties:
-      status:
-        type: number
-      message:
-        type: string
-      jobs:
-        type: array
-        items:
-          $ref: '#/components/schemas/JobImportationInfo'
 responses:
   200:
     description: Agendamento da raspagem dos registros sobre importação

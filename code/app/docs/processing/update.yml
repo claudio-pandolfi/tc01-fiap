@@ -7,21 +7,38 @@ parameters:
     in: path
     type: string
     required: true
-  - name: 'body'
-    in: 'body'
-    required: true,
-    schema: 
-      $ref: '#/components/schemas/NewProcessing'
+    description: Código do processamento
+requestBody:
+  description: Dados de processamento
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/NewProcessing'
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Retorno da atualização de registro sobre processamento
-    schema:
-      $ref: '#/components/schemas/NewProcessing'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/NewProcessing'
   400:
     description: Erro ao atualizar o registro sobre processamento
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 400
+            message: 'Erro ao localizar o registro sobre processamento'
   404:
     description: Registro sobre processamento não encontrado
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+            status: 404
+            message: 'Registro sobre processamento não encontrado'

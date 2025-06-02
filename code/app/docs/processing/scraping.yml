@@ -15,47 +15,48 @@ parameters:
     required: true
     description: Classificação separada por vírgula (Ex. _**viniferas, american**_). Para buscar todos os anos utilize o valor _**all**_
     default: viniferas
-definitions:
-  JobProcessingInfo:
-    type: object
-    properties:
-      job_id:
-        type: string
-      job_name:
-        type: string
-      classification:
-        type: string
-      year:
-        type: number
-  JobProcessingResponse:
-    type: object
-    properties:
-      status:
-        type: number
-      message:
-        type: string
-      jobs:
-        type: array
-        items:
-          $ref: '#/components/schemas/JobProcessingInfo'
+security:
+  - BearerAuth: []
 responses:
   200:
     description: Agendamento da raspagem dos registros sobre processamento
-    schema:
-      $ref: '#/components/schemas/JobProcessingResponse'
-  "400 / 1":
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/JobProcessingResponse'
+        example:
+          status: 200
+          message: 'Agendamento sobre processamento realizado com sucesso'
+          jobs: 
+            - job_id: 123
+              job_name: 'scrapingTask'
+              classification: viniferas
+              year: 2023
+  400:
     description: Erro ao agendar a raspagem sobre processamento
-    schema:
-      $ref: '#/components/schemas/Message'
-  "400 / 2":
-    description: Ano inválido. (> 1970 ou < 2023)
-    schema:
-      $ref: '#/components/schemas/Message'
-  "400 / 3":
-    description: Classificação inválida. Opções disponíveis -> _**all, viniferas, american, table_grape, unrated.**_'
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        examples:
+          Default:
+            value:
+              status: 401
+              message: 'Erro ao agendar a raspagem sobre processamento'
+          Ano:
+            value:
+              status: 401
+              message: 'Ano inválido. Opções disponíveis: all, maior que 1970 ou menor que 2023.'
+          Classificacao:
+            value:
+              status: 401
+              message: 'Classificação inválida. Opções disponíveis: all, viniferas, american, table_grape, unrated.'
   404:
     description: Não foi possível localizar os dados para a raspagem
-    schema:
-      $ref: '#/components/schemas/Message'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Message'
+        example:
+          status: 401
+          message: 'Não foi possível localizar os dados para a raspagem'
