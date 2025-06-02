@@ -9,3 +9,4 @@ beautifulsoup4
 redis
 rq
 flask-jwt-extended
+gunicorn
