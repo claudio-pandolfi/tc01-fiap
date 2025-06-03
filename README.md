@@ -45,10 +45,8 @@ API_VERSION = '0.0.1'
 API_DESCRIPTION = 'API de analisar os dados de vitivinicultura da Embrapa'
 
 # Variaveis dos bancos de dados
-MONGODB_HOST = # Host do banco de dados. Para o ambiente local utilizar 'mongodb'
-MONGODB_PORT = # Porta do banco de dados. Por padrao utilizar 27017
-MONGODB_DATABASE = # Nome da base de dados
-REDIS_URL = # Host do redis. Para ambiente local utilizar 'redis_queue'
+MONGODB_HOST = # Host do banco de dados. Para o ambiente local utilizar 'mongodb://mongodb/database'
+REDIS_URL = # Host do redis. Para ambiente local utilizar 'redis://redis_queue:6379/0'
 ```
 
 Para a execução deve-se utilizar basta utilizar o comando abaixo:

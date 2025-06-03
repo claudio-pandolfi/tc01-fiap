@@ -17,8 +17,6 @@ class Config:
         self.FLASK_ENV = os.getenv('FLASK_ENV')
         self.JWT_SECRET_KEY = os.getenv('SECRET_KEY')
         self.SECRET_KEY = os.getenv('SECRET_KEY')
-        self.MONGODB_DATABASE = os.getenv('MONGODB_DATABASE')
         self.MONGODB_HOST = os.getenv('MONGODB_HOST')
-        self.MONGODB_PORT = int(os.getenv('MONGODB_PORT'))
         self.REDIS_URL = os.getenv('REDIS_URL')
         self.EMBRAPA_URL = os.getenv('EMBRAPA_URL')
